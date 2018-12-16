@@ -1,7 +1,6 @@
 var data = require('./demo.js').data;
 var Sequelize = require('sequelize');
-var database = new Sequelize('postgres://quoccuong:@localhost:5432/quoccuong');
-//var database = new Sequelize('quoccuong','quoccuong','',{host:'localhost',dialect : 'postgres', port : 5432});
+var database = new Sequelize('postgres://postgres:vannhuthe1@localhost:5432/todo');
 var Todo = database.define('todo', {
     id : {
         type: Sequelize.INTEGER,
@@ -23,4 +22,4 @@ Todo.sync({force : true}).then(function(){
 
 });
 
-module.exports = Todo
+module.exports = Todo;
