@@ -9,7 +9,14 @@ var Todo = database.define('todo', {
     },
     title : {
         type : Sequelize.STRING,
-        allowNull : false
+        allowNull : false,
+        validate: {
+            notEmpty:true
+        }
+    },
+    completed: {
+        type :Sequelize.BOOLEAN,
+        defaultValue: false
     }
 }, {
     freezeTableName : true

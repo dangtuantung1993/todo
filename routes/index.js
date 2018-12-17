@@ -4,9 +4,36 @@ var Todo = require('../models/todo.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  Todo.findAll().then(function(results) {
+  Todo.findAll({order:'id'}).then(function(results) {
     res.render('index', { data : results });
   })
 });
+router.post('/',function (req,res) {
 
+  var newTodo = req.body.todo;
+  Todo.create({title : newTodo}).then(function(){
+  	res.redirect('/');
+  }).catch(function (error) {
+    console.log(error.stack);
+    res.redirect('/');
+  })
+
+});
+router.get('/done/:id',function (req,res) {
+  Todo.update({completed: true},{where: {
+    id:req.params.id
+    }}).then(function () {
+    res.redirect('/');
+  })
+
+});
+router.get('/delete/:id',function (req,res) {
+  Todo.destroy({
+    where: {
+      id:req.params.id
+    }
+  }).then(function () {
+    res.redirect('/');
+  })
+})
 module.exports = router;

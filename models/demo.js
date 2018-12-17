@@ -5,4 +5,6 @@ exports.data = [
     'Gửi email cho khách hàng',
     'Viết nốt báo cáo',
     'Đi xem phim với bạn gái',
-]
+    'Xem bóng đá',
+    'Quẩy lol',
+    ]
